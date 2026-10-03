@@ -47,7 +47,7 @@ These rules mean each signed-in person can only read and write their own progres
 
 ## 5. Put the site on GitHub
 1. At <https://github.com>, select **New repository**. Name it `hsc-flashcards`, set it to **Public**, and create it.
-2. Select **uploading an existing file**. Drag in every file from this folder: `index.html`, `firebase-config.js`, `manifest.webmanifest`, the three `icon-*.png` files and this `README.md`.
+2. Select **uploading an existing file**. Drag in every file from this folder: `index.html`, `modules.js`, the `cards-*.js` files, `firebase-config.js`, `manifest.webmanifest`, the three `icon-*.png` files and this `README.md`.
 3. Select **Commit changes**.
 
 ## 6. Turn on GitHub Pages
@@ -72,8 +72,24 @@ Send them the link. They select **Create account** and get their own progress. N
 ## Free limits
 The free plan allows 50,000 reads and 20,000 writes per day, plus 1 GiB of storage. A study session uses a few hundred at most, so a group of friends stays well within it.
 
+## How the files fit together
+- `index.html`: the app itself. Rarely changes.
+- `modules.js`: the catalogue: built-in subjects, their modules, and which card files to load.
+- `cards-*.js`: one file of built-in cards per module (e.g. `cards-chem-m6.js`).
+- `firebase-config.js`: your Firebase settings. Never replace this one when updating.
+
+## Adding a new module
+1. Ask Claude to make the card file for it (e.g. `cards-chem-m8.js`), uploading the slides and your current `modules.js`.
+2. In the repository, **Add file → Upload files**, add the new card file and **Commit**.
+3. Open `modules.js` in the repository, select the pencil icon to edit, add the new file name to the `files` list, increase `version` by 1, then **Commit changes**.
+
+Everyone sees the new module after a refresh. Raising `version` makes devices fetch the new files instead of an old saved copy.
+
+## Your own subjects and decks
+Each account can hide built-in subjects it doesn't take and add its own subjects, topics, decks and cards (sidebar → **Manage subjects**). You can also add your own decks inside built-in modules, e.g. a deck on your own essay in English Module A. These are saved to the account and sync across that person's devices; nobody else sees them. Cards can be added one at a time or imported from Quizlet or a spreadsheet: one card per line, front and back separated by a tab or `|`.
+
 ## Updating the app later
-Upload a new `index.html` over the old one: in the repository, **Add file → Upload files**, then commit. Keep your `firebase-config.js`. Progress lives in each account, so updates never touch it.
+Upload the new files over the old ones (**Add file → Upload files**, then commit). Never replace your `firebase-config.js`. Progress and everyone's own decks live in their accounts, so updates never touch them.
 
 ## Troubleshooting
 - **"Email sign-in isn't switched on"**: redo step 3.
