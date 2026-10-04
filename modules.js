@@ -7,7 +7,7 @@
   and increase `version` by 1 (this makes every device fetch the new files instead of an old copy).
 */
 window.HSC_CATALOG = {
-  version: 1,
+  version: 2,
   subjects: [
     { id: 'chem', name: 'Chemistry', modules: [
       { id: 'chem-m5', code: 'Module 5', title: 'Equilibrium and Acid Reactions' },
@@ -29,6 +29,7 @@ window.HSC_CATALOG = {
       { id: 'maths-ext1', code: 'Extension 1', title: 'Mathematics Extension 1' } ] }
   ],
   files: [
+    'cards-chem-m5.js',
     'cards-chem-m6.js',
     'cards-chem-m7.js'
   ]
