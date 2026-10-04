@@ -31,6 +31,7 @@ window.HSC_CATALOG = {
   files: [
     'cards-chem-m5.js',
     'cards-chem-m6.js',
-    'cards-chem-m7.js'
+    'cards-chem-m7.js',
+    'cards-chem-m8.js'
   ]
 };
